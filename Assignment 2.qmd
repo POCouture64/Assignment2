@@ -16,6 +16,7 @@ This is all the code I used to complete Assignment 2.
 library(haven)
 library(tidyverse)
 library(dplyr)
+library(flexplot)
 
 ## Loading in the data
 PSYR6003_A2 <- read_sav("PSYR6003.A2.sav")
@@ -60,4 +61,18 @@ A2 <-  mutate(A2, CONS_summed = (tipm.CONS1.3y+reverse_CONS2)/2)
 
 ```
 
+## Hypotheses to Test
 
+
+
+```{r}
+
+regression <- lm(NegAff_summed~sex+CONS_summed+SPP_summed, data = A2)
+
+#Step 2: Visualize
+
+visualize(regression)
+```
+
+
+## H2: SPP will predict unique variance in negative affect over and above sex and conscientiousness in a meaningful way.
