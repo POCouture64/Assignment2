@@ -9,6 +9,7 @@ editor: visual
 This is all the code I used to complete Assignment 2.
 
 ## Loading Packages and Data
+
 ```{r}
 #| label: Load packages and data
 
@@ -57,6 +58,6 @@ A2 <-  mutate(A2, NegAff_summed = (guilt1.3y + guilt2.3y + guilt3.3y + dep1.3y +
 #Conscientiousness
 A2 <-  mutate(A2, CONS_summed = (tipm.CONS1.3y+reverse_CONS2)/2)
 
-
 ```
+
 
