@@ -1,0 +1,62 @@
+---
+title: "Assignment 2"
+format: html
+editor: visual
+---
+
+## Assignment 2
+
+This is all the code I used to complete Assignment 2.
+
+## Loading Packages and Data
+```{r}
+#| label: Load packages and data
+
+library(haven)
+library(tidyverse)
+library(dplyr)
+
+## Loading in the data
+PSYR6003_A2 <- read_sav("PSYR6003.A2.sav")
+
+A2 <- na.omit(PSYR6003_A2)
+View(A2)
+
+```
+
+```{r}
+#| label: Making Sex a Factor 
+
+A2 <- A2 %>% 
+  mutate(sex = as.factor(sex)) %>% 
+  mutate(sex = ifelse(sex == "Female", 0, 1))
+
+#Checking to ensure the previous code worked
+view(A2)
+
+```
+
+```{r}
+#| label: Reverse Code and Subscale Means
+
+## I first need to reverse code question tipm.CONS2.3y
+
+A2 <- A2 %>%
+  mutate(reverse_CONS2 = 8 - tipm.CONS2.3y)
+view(A2$reverse_CONS2)  
+
+# Now that I have reverse-coded the tipm.CONS2.3y question I can calculate the mean score totals for SPP, negative affect, and conscientiousness 
+
+#SPP
+A2 <-  mutate(A2, SPP_summed = (mps.SPP1.3y + mps.SPP2.3y + mps.SPP3.3y + mps.SPP4.3y + mps.SPP5.3y)/5)
+
+#Negative affect
+
+A2 <-  mutate(A2, NegAff_summed = (guilt1.3y + guilt2.3y + guilt3.3y + dep1.3y + dep2.3y + dep3.3y + fear1.3y + fear2.3y + fear3.3y + host1.3y + host2.3y + host3.3y)/12)
+
+#Conscientiousness
+A2 <-  mutate(A2, CONS_summed = (tipm.CONS1.3y+reverse_CONS2)/2)
+
+
+```
+
