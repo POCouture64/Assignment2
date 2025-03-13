@@ -114,7 +114,7 @@ Explanation of graphs to help with write up:
 
 #Step 4: Creating an APA table with the all the regression data. It will be Table 1 and provides the predictor, regression coefficient (b), regression coefficient with 95% CI [Upper and Lower Limit], beta (standardized regression coefficient), beta with 95% CI [Upper and Lower Limit], squared partial correlations (sr^2), squared partial correlation 95% CI [Upper and Lower Limit], correlation coefficient (r), and Fit which is how well the model fits the data
 
-apa.reg.table(H1, filename = "H1 Assignment 2.docx", table.number = 1)
+apa.reg.table(H1, filename = "H1 Regression Table 1.docx", table.number = 1)
 
 ```
 
@@ -125,7 +125,7 @@ Table 1 Analysis: Sex predicts NA and being female predicts having more negative
 
 #| label: Bivariate Correlations for H1
 
-apa.reg.table(H1, filename=NA, table.number = 2, prop.var.conf.level = 0.95)
+apa.reg.table(H1, filename= "H1 Regression Table 2. docx", table.number = 2, prop.var.conf.level = 0.95)
 
 ```
 
@@ -142,12 +142,24 @@ H2: SPP will predict unique variance in NA when controlling sex and conscientiou
 ```{r}
 #| label: H2 Calculations
 
-# Step 1: Creating the regression model with the summed NA 
+## Correlations for all the variables
 
 H2 <- select(A2, NegAff_summed, CONS_summed, SPP_summed, sex)
 
-apa.cor.table(H2, table.number = 3, filename = "Correlations Assignment 2.docx")
-
+apa.cor.table(H2, table.number = 3, filename = "H2 Correlation Table 3.docx")
   
+```
+
+```{r}
+#| label: Table 4 code
+
+## Using this code to examine the regression coefficients and other data from the regression for the Control model (with only CONS and sex) and the Predictor model (CONS, SPP, and sex). The Control model is essentially the reduced model and the Predictor model is essentially the full model. 
+
+Control <- lm(NegAff_summed ~ CONS_summed + sex, data = A2)
+Predictor <- lm(NegAff_summed ~ CONS_summed + SPP_summed + sex, data = A2)
+
+Table4 <- apa.reg.table(Control, Predictor,
+                        table.number = 4,
+                        filename="H2 Regression Control and Predictor Table 4.docx")
 ```
 
