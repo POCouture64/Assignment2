@@ -97,9 +97,9 @@ visualize(H1)
 
 estimates(H1)
 
-#Step 4: Creating an APA table with the all the  
+#Step 4: Creating an APA table with the all the regression data. It will be Table 1 and provides the predictor, regression coefficient (b), regression coefficient with 95% CI [Upper and Lower Limit], beta (standardized regression coefficient), beta with 95% CI [Upper and Lower Limit], squared partial correlations (sr^2), squared partial correlation 95% CI [Upper and Lower Limit], correlation coefficient (r), and Fit which is how well the model fits the data
 
-apa.reg.table(H1, filename = "H1.doc", table.number = 1)
+apa.reg.table(H1, filename = "H1 Assignment 2.docx", table.number = 1)
 
 ```
 
@@ -107,6 +107,7 @@ Explanation of graphs to help with write up:
 --  HoR is approximately normally distributed but shows a slight right skew. If this      is the only violation of the assumptions, the model is still considered reliable.     However, if other assumptions are also violated, the model may not be valid.
 
 --  RDP is relatively flat with a slight curve at the lower and upper ends but does       not seem to be enough for us to consider using a quadratic.** Asked Ashley
+    ** you’re good to just mention it appears to be violated and that a quadratic or        other model may be a better fit and move along as if the assumption was met!
 
 --  S-L plot shows that the line of variance is relatively flat and straight meaning      the homoskedasticity assumption has been met.
 
