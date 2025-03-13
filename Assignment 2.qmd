@@ -15,11 +15,11 @@ Loading in the data and removing all data for participants with N/A for answers
 ```{r}
 #| label: Load packages and data
 
-install.packages("remotes")
+#install.packages("remotes")
 
-remotes::install_github("dustinfife/flexplot")
+#remotes::install_github("dustinfife/flexplot")
 
-install.packages("apaTables")
+#install.packages("apaTables")
 
 library(haven)
 library(tidyverse)
@@ -104,7 +104,7 @@ Explanation of graphs to help with write up:
 --  HoR is approximately normally distributed but shows a slight right skew. If this      is the only violation of the assumptions, the model is still considered reliable.     However, if other assumptions are also violated, the model may not be valid.
 
 --  RDP is relatively flat with a slight curve at the lower and upper ends but does       not seem to be enough for us to consider using a quadratic.** Asked Ashley
-    ** you’re good to just mention it appears to be violated and that a quadratic or        other model may be a better fit and move along as if the assumption was met!
+    ** you're good to just mention it appears to be violated and that a quadratic or        other model may be a better fit and move along as if the assumption was met!
 
 --  S-L plot shows that the line of variance is relatively flat and straight meaning      the homoskedasticity assumption has been met.
 
