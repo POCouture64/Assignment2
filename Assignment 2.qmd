@@ -10,8 +10,14 @@ This is all the code I used to complete Assignment 2.
 
 ## Loading Packages and Data
 
+Loading in the data and removing all data for participants with N/A for answers
+
 ```{r}
 #| label: Load packages and data
+
+install.packages("remotes")
+
+remotes::install_github("dustinfife/flexplot")
 
 library(haven)
 library(tidyverse)
@@ -26,6 +32,7 @@ View(A2)
 
 ```
 
+Making sex a factor rather than just a numerical variable
 ```{r}
 #| label: Making Sex a Factor 
 
@@ -37,6 +44,10 @@ A2 <- A2 %>%
 view(A2)
 
 ```
+
+## Reverse Coding and Calculating Subscale Means
+
+Reverse coding tipm.CONS2.3y and then using this new score to calculate the 
 
 ```{r}
 #| label: Reverse Code and Subscale Means
@@ -63,7 +74,11 @@ A2 <-  mutate(A2, CONS_summed = (tipm.CONS1.3y+reverse_CONS2)/2)
 
 ## Hypotheses to Test
 
+Sex and conscientiousness is associated with negative affect. Women > NA, conscientiousness neg. corr. to NA. SPP pos. corr. w/ NA. Sex, conscientiousness 
+and SPP covary (hard to detect unique effects). Show incremental validity of SPP
+to predict NA more than sex and conscientiousness. 
 
+H1: Sex, conscientiousness and SPP predict NA. MR will be used w/ the GLM 
 
 ```{r}
 
@@ -74,5 +89,6 @@ regression <- lm(NegAff_summed~sex+CONS_summed+SPP_summed, data = A2)
 visualize(regression)
 ```
 
+Explanation of graphs to help with write up: 
 
 ## H2: SPP will predict unique variance in negative affect over and above sex and conscientiousness in a meaningful way.
