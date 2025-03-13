@@ -19,10 +19,13 @@ install.packages("remotes")
 
 remotes::install_github("dustinfife/flexplot")
 
+install.packages("apaTables")
+
 library(haven)
 library(tidyverse)
 library(dplyr)
 library(flexplot)
+library(apaTables)
 
 ## Loading in the data
 PSYR6003_A2 <- read_sav("PSYR6003.A2.sav")
@@ -82,13 +85,33 @@ H1: Sex, conscientiousness and SPP predict NA. MR will be used w/ the GLM
 
 ```{r}
 
-regression <- lm(NegAff_summed~sex+CONS_summed+SPP_summed, data = A2)
+# Step 1: Creating the regression model with the summed NA 
 
-#Step 2: Visualize
+H1 <- lm(NegAff_summed~sex+CONS_summed+SPP_summed, data = A2)
 
-visualize(regression)
+#Step 2: Visualize the plots
+
+visualize(H1)
+
+#Step 3: Model Output
+
+estimates(H1)
+
+#Step 4: Creating an APA table with the all the  
+
+apa.reg.table(H1, filename = "H1.doc", table.number = 1)
+
 ```
 
 Explanation of graphs to help with write up: 
+--  HoR is approximately normally distributed but shows a slight right skew. If this      is the only violation of the assumptions, the model is still considered reliable.     However, if other assumptions are also violated, the model may not be valid.
+
+--  RDP is relatively flat with a slight curve at the lower and upper ends but does       not seem to be enough for us to consider using a quadratic.** Asked Ashley
+
+--  S-L plot shows that the line of variance is relatively flat and straight meaning      the homoskedasticity assumption has been met.
+
+--  Assumption of Independence is met because the participants most likely did not        influence each others scores since we can assume they did not interact while          completing the survey. Especially in undergraduate survey research, most of it is     online meaning people can complete it at their own convenience and not have to be     in a testing facility where they can discuss with other participants. 
+
+
 
 ## H2: SPP will predict unique variance in negative affect over and above sex and conscientiousness in a meaningful way.
