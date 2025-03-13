@@ -191,6 +191,12 @@ Full -- NA = b0 + b1(sex) + b2(CONS) + b3(SPP) + e
 
 model.comparison(Reduced, Full)
 
+# Generate an APA-formatted regression table for the model comparison
+apa.reg.table(Reduced, Full, 
+              table.number = 5, 
+              filename = "H2_Model_Comparison.docx")
+
+
 ```
 
 Full model has a lower AIC and BIC compared to the reduced model and the Bayes factor is much higher which indicates that the full model fits the data better than the reduced model. Conclusion: H2 is confirmed meaning that SPP predicts unique variance in negative affect over and above sex and conscientiousness. 
