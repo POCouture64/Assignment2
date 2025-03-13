@@ -163,9 +163,37 @@ Table4 <- apa.reg.table(Reduced, Full,
                         filename="H2 Regression Control and Predictor Table 4.docx")
 ```
 
+Step 1: 
+-- Research question: How does SPP predict NA after controlling for sex and conscientiousness?
 
+Step 2:
+-- GLM Format
 
+NA = b0 + b1(sex) + b2(CONS) + b3(SPP) + e
 
+Step 3:
+-- Parameter of interest
+
+NA = b0 + b1(sex) + b2(CONS) + b3(SPP) + e
+
+Step 4:
+-- Creating a reduced and full model
+
+Reduced -- NA = b0 + b1(sex) + b2(CONS) + e
+Full -- NA = b0 + b1(sex) + b2(CONS) + b3(SPP) + e
+
+```{r}
+#| label: Comparing Reduced and Full Model
+
+# Creating a reduced and full model. Reduced does not include SPP but the full model contains SPP.
+
+# The "Reduced" and "Full" objects were created for Table 4 so there is no need to make them again here but I will call on them from the previous block of code. 
+
+model.comparison(Reduced, Full)
+
+```
+
+Full model has a lower AIC and BIC compared to the reduced model and the Bayes factor is much higher which indicates that the full model fits the data better than the reduced model. Conclusion: H2 is confirmed meaning that SPP predicts unique variance in negative affect over and above sex and conscientiousness. 
 
 
 
