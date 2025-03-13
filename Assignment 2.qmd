@@ -75,7 +75,7 @@ A2 <-  mutate(A2, CONS_summed = (tipm.CONS1.3y+reverse_CONS2)/2)
 
 ```
 
-## Hypotheses to Test
+## H1
 
 Sex and conscientiousness is associated with negative affect. Women > NA, conscientiousness neg. corr. to NA. SPP pos. corr. w/ NA. Sex, conscientiousness 
 and SPP covary (hard to detect unique effects). Show incremental validity of SPP
@@ -84,6 +84,7 @@ to predict NA more than sex and conscientiousness.
 H1: Sex, conscientiousness and SPP predict NA. MR will be used w/ the GLM 
 
 ```{r}
+#| label: H1 Calculations
 
 # Step 1: Creating the regression model with the summed NA 
 
@@ -128,6 +129,25 @@ apa.reg.table(H1, filename=NA, table.number = 2, prop.var.conf.level = 0.95)
 
 ```
 
-Table 2 Analysis : Bivariate correlations between sex, conscientiousness, and SPP. There are notable correlations between nearly every variable pair except for sex and socially prescribed perfectionism; we will therefore require a second analysis to examine the isolated effect of socially prescribed perfectionism (H2)
+Table 2 Analysis : Bivariate correlations between sex, conscientiousness, and SPP. The correlation between NA and CONS and SPP are significant. The correlation between NA and sex was not significant. The correlations between NA and sex and CONS are negative and the correlation between NA and SPP is positive. Since both CONS and SPP have similar r (despite one being negative) meaning their effects may overlap. Since CONS and SPP are both significantly correlated we must test if SPP explains some of the variance in NA when controlling for sex and conscientiousness. This will test whether SPP adds meaningful, incremental value to the prediction of NA. This is H2.  
 
-## H2: SPP will predict unique variance in negative affect over and above sex and conscientiousness in a meaningful way.
+## H2
+
+Sex and conscientiousness is associated with negative affect. Women > NA, conscientiousness neg. corr. to NA. SPP pos. corr. w/ NA. Sex, conscientiousness 
+and SPP covary (hard to detect unique effects). Show incremental validity of SPP
+to predict NA more than sex and conscientiousness.
+
+H2: SPP will predict unique variance in NA when controlling sex and conscientiousness
+
+```{r}
+#| label: H2 Calculations
+
+# Step 1: Creating the regression model with the summed NA 
+
+H2 <- select(A2, NegAff_summed, CONS_summed, SPP_summed, sex)
+
+apa.cor.table(H2, table.number = 3, filename = "Correlations Assignment 2.docx")
+
+  
+```
+
