@@ -97,10 +97,6 @@ visualize(H1)
 
 estimates(H1)
 
-#Step 4: Creating an APA table with the all the regression data. It will be Table 1 and provides the predictor, regression coefficient (b), regression coefficient with 95% CI [Upper and Lower Limit], beta (standardized regression coefficient), beta with 95% CI [Upper and Lower Limit], squared partial correlations (sr^2), squared partial correlation 95% CI [Upper and Lower Limit], correlation coefficient (r), and Fit which is how well the model fits the data
-
-apa.reg.table(H1, filename = "H1 Assignment 2.docx", table.number = 1)
-
 ```
 
 Explanation of graphs to help with write up: 
@@ -113,6 +109,25 @@ Explanation of graphs to help with write up:
 
 --  Assumption of Independence is met because the participants most likely did not        influence each others scores since we can assume they did not interact while          completing the survey. Especially in undergraduate survey research, most of it is     online meaning people can complete it at their own convenience and not have to be     in a testing facility where they can discuss with other participants. 
 
+```{r}
 
+#Step 4: Creating an APA table with the all the regression data. It will be Table 1 and provides the predictor, regression coefficient (b), regression coefficient with 95% CI [Upper and Lower Limit], beta (standardized regression coefficient), beta with 95% CI [Upper and Lower Limit], squared partial correlations (sr^2), squared partial correlation 95% CI [Upper and Lower Limit], correlation coefficient (r), and Fit which is how well the model fits the data
+
+apa.reg.table(H1, filename = "H1 Assignment 2.docx", table.number = 1)
+
+```
+
+
+Table 1 Analysis: Sex predicts NA and being female predicts having more negative affect (b = -0.56 [-0.97, -0.15]). Conscientiousness negatively predicts NA (b = -0.26 [-0.38, -0.15]). SPP predicts NA (b = 0.20 [0.10, 0.30]). The whole model predicts negative affect (R2 = 0.269 [.13, 0.37]); hypothesis #1 is confirmed. Table 1 provides all the details of the regression mentioned above. 
+
+```{r}
+
+#| label: Bivariate Correlations for H1
+
+apa.reg.table(H1, filename=NA, table.number = 2, prop.var.conf.level = 0.95)
+
+```
+
+Table 2 Analysis : Bivariate correlations between sex, conscientiousness, and SPP. There are notable correlations between nearly every variable pair except for sex and socially prescribed perfectionism; we will therefore require a second analysis to examine the isolated effect of socially prescribed perfectionism (H2)
 
 ## H2: SPP will predict unique variance in negative affect over and above sex and conscientiousness in a meaningful way.
