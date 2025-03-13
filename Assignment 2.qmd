@@ -155,11 +155,18 @@ apa.cor.table(H2, table.number = 3, filename = "H2 Correlation Table 3.docx")
 
 ## Using this code to examine the regression coefficients and other data from the regression for the Control model (with only CONS and sex) and the Predictor model (CONS, SPP, and sex). The Control model is essentially the reduced model and the Predictor model is essentially the full model. 
 
-Control <- lm(NegAff_summed ~ CONS_summed + sex, data = A2)
-Predictor <- lm(NegAff_summed ~ CONS_summed + SPP_summed + sex, data = A2)
+Reduced <- lm(NegAff_summed ~ CONS_summed + sex, data = A2)
+Full <- lm(NegAff_summed ~ CONS_summed + SPP_summed + sex, data = A2)
 
-Table4 <- apa.reg.table(Control, Predictor,
+Table4 <- apa.reg.table(Reduced, Full,
                         table.number = 4,
                         filename="H2 Regression Control and Predictor Table 4.docx")
 ```
+
+
+
+
+
+
+
 
