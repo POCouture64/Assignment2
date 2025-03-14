@@ -57,23 +57,24 @@ Reverse coding tipm.CONS2.3y and then using this new score to calculate the
 ```{r}
 #| label: Reverse Code and Subscale Means
 
-## I first need to reverse code question tipm.CONS2.3y
-
 A2 <- A2 %>%
-  mutate(reverse_CONS2 = 8 - tipm.CONS2.3y)
-view(A2$reverse_CONS2)  
+  # Reverse code tipm.CONS2.3y
+  mutate(reverse_CONS2 = 8 - tipm.CONS2.3y) %>%
+  
+  # Calculate SPP mean score
+  mutate(SPP_summed = (mps.SPP1.3y + mps.SPP2.3y + mps.SPP3.3y + mps.SPP4.3y + mps.SPP5.3y) / 5) %>%
+  
+  # Calculate Negative Affect mean score
+  mutate(NegAff_summed = (guilt1.3y + guilt2.3y + guilt3.3y + 
+                          dep1.3y + dep2.3y + dep3.3y + 
+                          fear1.3y + fear2.3y + fear3.3y + 
+                          host1.3y + host2.3y + host3.3y) / 12) %>%
+  
+  # Calculate Conscientiousness mean score
+  mutate(CONS_summed = (tipm.CONS1.3y + reverse_CONS2) / 2)
 
-# Now that I have reverse-coded the tipm.CONS2.3y question I can calculate the mean score totals for SPP, negative affect, and conscientiousness 
-
-#SPP
-A2 <-  mutate(A2, SPP_summed = (mps.SPP1.3y + mps.SPP2.3y + mps.SPP3.3y + mps.SPP4.3y + mps.SPP5.3y)/5)
-
-#Negative affect
-
-A2 <-  mutate(A2, NegAff_summed = (guilt1.3y + guilt2.3y + guilt3.3y + dep1.3y + dep2.3y + dep3.3y + fear1.3y + fear2.3y + fear3.3y + host1.3y + host2.3y + host3.3y)/12)
-
-#Conscientiousness
-A2 <-  mutate(A2, CONS_summed = (tipm.CONS1.3y+reverse_CONS2)/2)
+# View the updated dataset (optional)
+View(A2)
 
 ```
 
