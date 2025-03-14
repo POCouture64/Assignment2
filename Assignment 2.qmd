@@ -157,8 +157,8 @@ apa.cor.table(H2, table.number = 3, filename = "H2 Correlation Table 3.doc")
 
 ## Using this code to examine the regression coefficients and other data from the regression for the Control model (with only CONS and sex) and the Predictor model (CONS, SPP, and sex). The Control model is essentially the reduced model and the Predictor model is essentially the full model. 
 
-Reduced <- lm(NegAff_summed ~ CONS_summed + sex, data = A2)
-Full <- lm(NegAff_summed ~ CONS_summed + SPP_summed + sex, data = A2)
+(Reduced <- lm(NegAff_summed ~ CONS_summed + sex, data = A2))
+(Full <- lm(NegAff_summed ~ CONS_summed + SPP_summed + sex, data = A2))
 
 Table4 <- apa.reg.table(Reduced, Full,
                         table.number = 4,
@@ -197,6 +197,8 @@ model.comparison(Reduced, Full)
 
 Full model has a lower AIC and BIC compared to the reduced model and the Bayes factor is much higher which indicates that the full model fits the data better than the reduced model. Conclusion: H2 is confirmed meaning that SPP predicts unique variance in negative affect over and above sex and conscientiousness. 
 
-
+Notes from Ashley about the Assignment
+- No need for graphs
+- 
 
 
