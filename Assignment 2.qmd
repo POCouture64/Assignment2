@@ -15,11 +15,13 @@ Loading in the data and removing all data for participants with N/A for answers
 ```{r}
 #| label: Load packages and data
 
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+
 #install.packages("remotes")
 
 #remotes::install_github("dustinfife/flexplot")
 
-#install.packages("apaTables")
+install.packages("apaTables")
 
 library(haven)
 library(tidyverse)
