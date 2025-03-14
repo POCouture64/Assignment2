@@ -198,8 +198,3 @@ model.comparison(Reduced, Full)
 
 Full model has a lower AIC and BIC compared to the reduced model and the Bayes factor is much higher which indicates that the full model fits the data better than the reduced model. Conclusion: H2 is confirmed meaning that SPP predicts unique variance in negative affect over and above sex and conscientiousness. 
 
-Notes from Ashley about the Assignment
-- No need for graphs
-- 
-
-
